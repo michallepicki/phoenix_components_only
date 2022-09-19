@@ -8,7 +8,7 @@ defmodule Hello.Layout.Root do
   import Phoenix.Controller, only: [get_csrf_token: 0]
 
   slot :inner_block, required: true
-  attr :conn, Plug.Conn, required: true
+  attr :page_title, :string, required: false, default: "Hello"
 
   def r(assigns) do
     ~H"""
@@ -19,7 +19,7 @@ defmodule Hello.Layout.Root do
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="csrf-token" content={get_csrf_token()} />
-        <%= live_title_tag(assigns[:page_title] || "Hello", suffix: " · Phoenix Framework") %>
+        <%= live_title_tag(@page_title, suffix: " · Phoenix Framework") %>
         <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
         <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
         </script>

@@ -14,7 +14,7 @@ defmodule Hello.View.Home do
 
   defp r(assigns) do
     ~H"""
-    <Layout.Root.r conn={@conn}>
+    <Layout.Root.r page_title="Home">
       <Layout.App.r conn={@conn}>
         <.content app_name={@app_name} />
       </Layout.App.r>
